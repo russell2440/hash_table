@@ -36,6 +36,17 @@ class hash_table{
     console.log('get value',value,'\n');
     return(value);
   }
+
+  keys(){
+    const key_array = [];
+    for (let i=0;i<this.data.length;i++)
+    {
+      if(this.data[i]){
+        key_array.push(this.data[i][0][0])
+      }
+    }
+    return key_array;
+  }
 }
 
 const ht = new hash_table(20);
@@ -47,3 +58,4 @@ ht.set('apples',20000);
 ht.get('apples');
 ht.set('peach',40000);
 ht.get('peach');
+ht.keys();
