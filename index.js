@@ -24,7 +24,15 @@ class hash_table{
   get(key){
     let address = 0;
     address = this.hash_fn(key);
-    let value = this.data[address];
+    let current_bucket = this.data[address];
+    if(current_bucket){
+      for(let i=0;i<current_bucket.length;i++){
+        if(key==current_bucket[i][0]){
+          console.log('get bucket',current_bucket,"-",current_bucket[i],'\n');
+          return current_bucket[i][1]
+        }
+      }
+    }
     console.log('get value',value,'\n');
     return(value);
   }
