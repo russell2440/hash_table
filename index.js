@@ -13,17 +13,18 @@ class hash_table{
   }
 
   set(key,value){
-    let index = 0;
-    index = this.hash_fn(key);
-    console.log('set at',index);
-    this.data[index] = value;
+    let address = this.hash_fn(key);
+    if(!this.data[address]){
+      this.data[address] = [];
+    }
+    this.data[address].push([key,value]);
+    return this.data;
   }
 
   get(key){
-    let index = 0;
-    index = this.hash_fn(key);
-    console.log('get at',index);
-    let value = this.data[index];
+    let address = 0;
+    address = this.hash_fn(key);
+    let value = this.data[address];
     console.log('get value',value,'\n');
     return(value);
   }
@@ -31,6 +32,8 @@ class hash_table{
 
 const ht = new hash_table(20);
 ht.set('grapes',1000);
+ht.set('grapes',14000);
+ht.set('grapes',28);
 ht.get('grapes');
 ht.set('apples',20000);
 ht.get('apples');
